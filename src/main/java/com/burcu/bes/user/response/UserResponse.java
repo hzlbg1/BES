@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL) // null olan alanlar json cıktısına eklenmez"
-public class CreateUserResponse {
+public class UserResponse {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String firstName;
