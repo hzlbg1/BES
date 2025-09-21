@@ -4,7 +4,7 @@ import com.burcu.bes.user.mapper.UserMapper;
 import com.burcu.bes.user.model.User;
 import com.burcu.bes.user.repository.UserRepository;
 import com.burcu.bes.user.request.CreateUserRequest;
-import com.burcu.bes.user.response.CreateUserResponse;
+import com.burcu.bes.user.response.UserResponse;
 import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public CreateUserResponse createUser(CreateUserRequest userRequest) {
+    public UserResponse createUser(CreateUserRequest userRequest) {
         if (userRepository.existsByEmail(userRequest.getEmail()))
             throw new IllegalArgumentException("Bu email ile kayıtlı kullanıcı zaten var!");
 

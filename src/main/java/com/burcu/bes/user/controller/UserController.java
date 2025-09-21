@@ -1,7 +1,7 @@
 package com.burcu.bes.user.controller;
 
 import com.burcu.bes.user.request.CreateUserRequest;
-import com.burcu.bes.user.response.CreateUserResponse;
+import com.burcu.bes.user.response.UserResponse;
 import com.burcu.bes.user.service.UserServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class UserController {
     }
 
     @PostMapping("create-user")
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserRequest userRequest) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest userRequest) {
         return ResponseEntity.ok(userServiceImpl.createUser(userRequest));
     }
 }

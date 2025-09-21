@@ -1,8 +1,8 @@
 package com.burcu.bes.user.service;
 
 import com.burcu.bes.user.request.CreateUserRequest;
-import com.burcu.bes.user.response.CreateUserResponse;
+import com.burcu.bes.user.response.UserResponse;
 
 public interface UserService {
-    CreateUserResponse createUser(CreateUserRequest userRequest);
+    UserResponse createUser(CreateUserRequest userRequest);
 }
