@@ -1,8 +1,10 @@
 package com.burcu.bes.user.controller;
 
 import com.burcu.bes.user.request.CreateUserRequest;
+import com.burcu.bes.user.request.UpdateUserRequest;
 import com.burcu.bes.user.response.UserResponse;
 import com.burcu.bes.user.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("create-user")
-    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest userRequest) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody CreateUserRequest userRequest) {
         return ResponseEntity.ok(userService.createUser(userRequest));
     }
 
@@ -30,5 +32,10 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UpdateUserRequest userRequest) {
+        return ResponseEntity.ok(userService.updateUser(id, userRequest));
     }
 }

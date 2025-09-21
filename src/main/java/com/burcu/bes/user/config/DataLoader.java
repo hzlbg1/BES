@@ -16,13 +16,13 @@ public class DataLoader {
                         .firstName("Ali")
                         .lastName("Yılmaz")
                         .email("ali@example.com")
-                        .password("sifre456")
+                        .password("sifre456a.A")
                         .build());
                 userRepository.save(User.builder()
                         .firstName("Veli")
                         .lastName("Şahin")
                         .email("veli@example.com")
-                        .password("sifre123")
+                        .password("sifre123a.A")
                         .build());
             }
         };
