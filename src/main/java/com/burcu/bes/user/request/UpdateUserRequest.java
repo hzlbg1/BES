@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserRequest {
+public class UpdateUserRequest {
     @NotBlank(message = "İsim alanı boş geçilemez!")
     @Size(max = 50, message = "İsim en fazla 50 karakter olmalı")
     private String firstName;

@@ -4,6 +4,7 @@ import com.burcu.bes.user.mapper.UserMapper;
 import com.burcu.bes.user.model.User;
 import com.burcu.bes.user.repository.UserRepository;
 import com.burcu.bes.user.request.CreateUserRequest;
+import com.burcu.bes.user.request.UpdateUserRequest;
 import com.burcu.bes.user.response.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,13 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(userMapper::mapUserToUserResponse)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserResponse updateUser(Long id, UpdateUserRequest userRequest) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kullanıcı bulunamadı " + id));
+        userMapper.mapUpdateUserFromRequest(userRequest, user);
+        return userMapper.mapUserToUserResponse(userRepository.save(user));
     }
 }
