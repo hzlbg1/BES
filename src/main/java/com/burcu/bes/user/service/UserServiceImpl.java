@@ -49,9 +49,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse updateUser(Long id, UpdateUserRequest userRequest) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kullanıcı bulunamadı " + id));
+        User user = findUserById(id);
         userMapper.mapUpdateUserFromRequest(userRequest, user);
         return userMapper.mapUserToUserResponse(userRepository.save(user));
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(findUserById(id).getId());
+    }
+
+    private User findUserById(Long id){
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kullanıcı bulunamadı " + id));
     }
 }

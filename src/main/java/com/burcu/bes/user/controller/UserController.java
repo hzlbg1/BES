@@ -38,4 +38,10 @@ public class UserController {
     public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UpdateUserRequest userRequest) {
         return ResponseEntity.ok(userService.updateUser(id, userRequest));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build(); // 204 No Content
+    }
 }
