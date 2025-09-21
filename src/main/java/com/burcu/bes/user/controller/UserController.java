@@ -19,4 +19,9 @@ public class UserController {
     public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest userRequest) {
         return ResponseEntity.ok(userServiceImpl.createUser(userRequest));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userServiceImpl.getUserById(id));
+    }
 }

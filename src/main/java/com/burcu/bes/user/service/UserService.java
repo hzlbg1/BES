@@ -5,4 +5,5 @@ import com.burcu.bes.user.response.UserResponse;
 
 public interface UserService {
     UserResponse createUser(CreateUserRequest userRequest);
+    UserResponse getUserById(Long id);
 }
